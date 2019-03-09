@@ -8,12 +8,36 @@
 
 /* Begin PBXBuildFile section */
 		60D702582231F8BC004308A5 /* MessagesClientGRPC.h in Headers */ = {isa = PBXBuildFile; fileRef = 60D702562231F8BC004308A5 /* MessagesClientGRPC.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		60D7026D2231F8C7004308A5 /* authorization.grpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D702602231F8C7004308A5 /* authorization.grpc.swift */; };
+		60D7026E2231F8C7004308A5 /* messages.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D702612231F8C7004308A5 /* messages.pb.swift */; };
+		60D7026F2231F8C7004308A5 /* messages.grpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D702622231F8C7004308A5 /* messages.grpc.swift */; };
+		60D702702231F8C7004308A5 /* authorization.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D702632231F8C7004308A5 /* authorization.pb.swift */; };
+		60D702712231F8C7004308A5 /* MCAuthorizationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D702652231F8C7004308A5 /* MCAuthorizationData.swift */; };
+		60D702722231F8C7004308A5 /* MCPerformMessageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D702662231F8C7004308A5 /* MCPerformMessageData.swift */; };
+		60D702732231F8C7004308A5 /* MCMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D702672231F8C7004308A5 /* MCMessage.swift */; };
+		60D702742231F8C7004308A5 /* MessageClientGRPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D702692231F8C7004308A5 /* MessageClientGRPC.swift */; };
+		60D702752231F8C7004308A5 /* TryConnectionOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D7026B2231F8C7004308A5 /* TryConnectionOperation.swift */; };
+		60D702762231F8C7004308A5 /* LoadMessageOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D7026C2231F8C7004308A5 /* LoadMessageOperation.swift */; };
+		BF5DBAC32389BC58D538AD7D /* libPods-MessagesClientGRPC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA0D4C2BBB71DA8FD9752296 /* libPods-MessagesClientGRPC.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		17CD76BE9A5A493ECAC8924F /* Pods-MessagesClientGRPC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MessagesClientGRPC.release.xcconfig"; path = "Pods/Target Support Files/Pods-MessagesClientGRPC/Pods-MessagesClientGRPC.release.xcconfig"; sourceTree = "<group>"; };
 		60D702532231F8BC004308A5 /* MessagesClientGRPC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MessagesClientGRPC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		60D702562231F8BC004308A5 /* MessagesClientGRPC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessagesClientGRPC.h; sourceTree = "<group>"; };
 		60D702572231F8BC004308A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		60D702602231F8C7004308A5 /* authorization.grpc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = authorization.grpc.swift; sourceTree = "<group>"; };
+		60D702612231F8C7004308A5 /* messages.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = messages.pb.swift; sourceTree = "<group>"; };
+		60D702622231F8C7004308A5 /* messages.grpc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = messages.grpc.swift; sourceTree = "<group>"; };
+		60D702632231F8C7004308A5 /* authorization.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = authorization.pb.swift; sourceTree = "<group>"; };
+		60D702652231F8C7004308A5 /* MCAuthorizationData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MCAuthorizationData.swift; sourceTree = "<group>"; };
+		60D702662231F8C7004308A5 /* MCPerformMessageData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MCPerformMessageData.swift; sourceTree = "<group>"; };
+		60D702672231F8C7004308A5 /* MCMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MCMessage.swift; sourceTree = "<group>"; };
+		60D702692231F8C7004308A5 /* MessageClientGRPC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageClientGRPC.swift; sourceTree = "<group>"; };
+		60D7026B2231F8C7004308A5 /* TryConnectionOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TryConnectionOperation.swift; sourceTree = "<group>"; };
+		60D7026C2231F8C7004308A5 /* LoadMessageOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadMessageOperation.swift; sourceTree = "<group>"; };
+		AA0D4C2BBB71DA8FD9752296 /* libPods-MessagesClientGRPC.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MessagesClientGRPC.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C1CD7CB5B0FB94B4763D92BB /* Pods-MessagesClientGRPC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MessagesClientGRPC.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MessagesClientGRPC/Pods-MessagesClientGRPC.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -21,6 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF5DBAC32389BC58D538AD7D /* libPods-MessagesClientGRPC.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -32,6 +57,8 @@
 			children = (
 				60D702552231F8BC004308A5 /* MessagesClientGRPC */,
 				60D702542231F8BC004308A5 /* Products */,
+				7862BBFCEA38568F750E4025 /* Pods */,
+				907B2061EDA9EDB893EDDA6F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -46,10 +73,77 @@
 		60D702552231F8BC004308A5 /* MessagesClientGRPC */ = {
 			isa = PBXGroup;
 			children = (
+				60D7025E2231F8C7004308A5 /* Classes */,
 				60D702562231F8BC004308A5 /* MessagesClientGRPC.h */,
 				60D702572231F8BC004308A5 /* Info.plist */,
 			);
 			path = MessagesClientGRPC;
+			sourceTree = "<group>";
+		};
+		60D7025E2231F8C7004308A5 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				60D7025F2231F8C7004308A5 /* GRPC Models */,
+				60D702642231F8C7004308A5 /* Proxy Models */,
+				60D702682231F8C7004308A5 /* Client */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		60D7025F2231F8C7004308A5 /* GRPC Models */ = {
+			isa = PBXGroup;
+			children = (
+				60D702602231F8C7004308A5 /* authorization.grpc.swift */,
+				60D702612231F8C7004308A5 /* messages.pb.swift */,
+				60D702622231F8C7004308A5 /* messages.grpc.swift */,
+				60D702632231F8C7004308A5 /* authorization.pb.swift */,
+			);
+			path = "GRPC Models";
+			sourceTree = "<group>";
+		};
+		60D702642231F8C7004308A5 /* Proxy Models */ = {
+			isa = PBXGroup;
+			children = (
+				60D702652231F8C7004308A5 /* MCAuthorizationData.swift */,
+				60D702662231F8C7004308A5 /* MCPerformMessageData.swift */,
+				60D702672231F8C7004308A5 /* MCMessage.swift */,
+			);
+			path = "Proxy Models";
+			sourceTree = "<group>";
+		};
+		60D702682231F8C7004308A5 /* Client */ = {
+			isa = PBXGroup;
+			children = (
+				60D7026A2231F8C7004308A5 /* Operations */,
+				60D702692231F8C7004308A5 /* MessageClientGRPC.swift */,
+			);
+			path = Client;
+			sourceTree = "<group>";
+		};
+		60D7026A2231F8C7004308A5 /* Operations */ = {
+			isa = PBXGroup;
+			children = (
+				60D7026B2231F8C7004308A5 /* TryConnectionOperation.swift */,
+				60D7026C2231F8C7004308A5 /* LoadMessageOperation.swift */,
+			);
+			path = Operations;
+			sourceTree = "<group>";
+		};
+		7862BBFCEA38568F750E4025 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C1CD7CB5B0FB94B4763D92BB /* Pods-MessagesClientGRPC.debug.xcconfig */,
+				17CD76BE9A5A493ECAC8924F /* Pods-MessagesClientGRPC.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		907B2061EDA9EDB893EDDA6F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AA0D4C2BBB71DA8FD9752296 /* libPods-MessagesClientGRPC.a */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -70,6 +164,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 60D7025B2231F8BC004308A5 /* Build configuration list for PBXNativeTarget "MessagesClientGRPC" */;
 			buildPhases = (
+				9B99F1EC927B087E5115BC5C /* [CP] Check Pods Manifest.lock */,
 				60D7024E2231F8BC004308A5 /* Headers */,
 				60D7024F2231F8BC004308A5 /* Sources */,
 				60D702502231F8BC004308A5 /* Frameworks */,
@@ -125,11 +220,46 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		9B99F1EC927B087E5115BC5C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MessagesClientGRPC-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		60D7024F2231F8BC004308A5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				60D702712231F8C7004308A5 /* MCAuthorizationData.swift in Sources */,
+				60D702722231F8C7004308A5 /* MCPerformMessageData.swift in Sources */,
+				60D702742231F8C7004308A5 /* MessageClientGRPC.swift in Sources */,
+				60D7026E2231F8C7004308A5 /* messages.pb.swift in Sources */,
+				60D7026D2231F8C7004308A5 /* authorization.grpc.swift in Sources */,
+				60D702762231F8C7004308A5 /* LoadMessageOperation.swift in Sources */,
+				60D702752231F8C7004308A5 /* TryConnectionOperation.swift in Sources */,
+				60D702732231F8C7004308A5 /* MCMessage.swift in Sources */,
+				60D702702231F8C7004308A5 /* authorization.pb.swift in Sources */,
+				60D7026F2231F8C7004308A5 /* messages.grpc.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,6 +390,7 @@
 		};
 		60D7025C2231F8BC004308A5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C1CD7CB5B0FB94B4763D92BB /* Pods-MessagesClientGRPC.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
@@ -285,6 +416,7 @@
 		};
 		60D7025D2231F8BC004308A5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 17CD76BE9A5A493ECAC8924F /* Pods-MessagesClientGRPC.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
