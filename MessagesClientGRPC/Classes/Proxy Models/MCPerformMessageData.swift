@@ -19,9 +19,13 @@ public struct MCPerformMessageToken {
 public struct MCPerformMessageData {
     public let phone: String
     public let messageClientToken: MCPerformMessageToken
+    public let userID: String
+    public let userNickName: String
     
-    public init(phone: String, messageClientToken: MCPerformMessageToken) {
+    public init(phone: String, messageClientToken: MCPerformMessageToken, userID: String, userNickName: String) {
         self.phone = phone
         self.messageClientToken = messageClientToken
+        self.userID = userID
+        self.userNickName = userNickName
     }
 }
