@@ -8,6 +8,19 @@
 
 import Foundation
 
+public struct MCSender {
+    public var id: String
+    public var nickName: String
+}
+
+public struct MCReceiver {
+    public var id: String
+    
+    public init(id: String) {
+        self.id = id
+    }
+}
+
 public enum MCMessageState {
     case queued // = 0
     case sending // = 1
@@ -19,19 +32,20 @@ public enum MCMessageState {
 public class MCMessage {
     public private(set) var id: String = String()
     public private(set) var text: String = String()
-    public private(set) var receiverID: String = String()
+    public private(set) var receiver: MCReceiver = MCReceiver(id: "")
     public private(set) var token: String = String()
-    public private(set) var date: String = String()
+    public private(set) var date: Int = Int()
     public private(set) var state: MCMessageState = .queued
-    public private(set) var senderID: String = String()
+    public private(set) var sender: MCSender = MCSender(id: "", nickName: "")
     
     var message: Messageservice_Message {
         var message = Messageservice_Message()
         message.id = id
         message.text = text
-        message.receiverID = receiverID
+        message.receiver = Messageservice_Receiver()
+        message.receiver.id = receiver.id
         message.token = token
-        message.date = date
+        message.date = Int32(date)
         switch state {
         case .queued:
             message.state = .queued
@@ -44,32 +58,34 @@ public class MCMessage {
         default:
             message.state = .UNRECOGNIZED(0)
         }
-        message.senderID = senderID
+        message.sender = Messageservice_Sender()
+        message.sender.id = sender.id
+        message.sender.nickName = sender.nickName
         
         return message
     }
     
-    public init(text: String, receiverID: String) {
+    public init(text: String, receiver: MCReceiver) {
         self.text = text
-        self.receiverID = receiverID
+        self.receiver = receiver
     }
     
-    init(id: String, text: String, receiverID: String, token: String, date: String, state: MCMessageState, senderID: String) {
+    init(id: String, text: String, receiver: MCReceiver, token: String, date: Int, state: MCMessageState, sender: MCSender) {
         self.id = id
         self.text = text
-        self.receiverID = receiverID
+        self.receiver = receiver
         self.token = token
         self.date = date
         self.state = state
-        self.senderID = senderID
+        self.sender = sender
     }
     
     init(GRPCMessage: Messageservice_Message) {
         self.id = GRPCMessage.id
         self.text = GRPCMessage.text
-        self.receiverID = GRPCMessage.receiverID
+        self.receiver.id = GRPCMessage.receiver.id
         self.token = GRPCMessage.token
-        self.date = GRPCMessage.date
+        self.date = Int(GRPCMessage.date)
         switch GRPCMessage.state {
         case .queued:
             self.state = .queued
@@ -82,7 +98,8 @@ public class MCMessage {
         default:
             self.state = .unrecognized
         }
-        self.senderID = GRPCMessage.senderID
+        self.sender.id = GRPCMessage.sender.id
+        self.sender.nickName = GRPCMessage.sender.nickName
     }
     
     func setState(state: MCMessageState) {

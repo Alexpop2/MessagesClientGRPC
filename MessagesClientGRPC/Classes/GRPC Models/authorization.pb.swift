@@ -60,6 +60,11 @@ struct Authorizationservice_Result {
   /// Clears the value of `token`. Subsequent reads from it will return its default value.
   mutating func clearToken() {_uniqueStorage()._token = nil}
 
+  var userID: String {
+    get {return _storage._userID}
+    set {_uniqueStorage()._userID = newValue}
+  }
+
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
   init() {}
@@ -136,11 +141,13 @@ extension Authorizationservice_Result: SwiftProtobuf.Message, SwiftProtobuf._Mes
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "data"),
     2: .same(proto: "token"),
+    3: .same(proto: "userId"),
   ]
 
   fileprivate class _StorageClass {
     var _data: String = String()
     var _token: Authorizationservice_MessangerToken? = nil
+    var _userID: String = String()
 
     static let defaultInstance = _StorageClass()
 
@@ -149,6 +156,7 @@ extension Authorizationservice_Result: SwiftProtobuf.Message, SwiftProtobuf._Mes
     init(copying source: _StorageClass) {
       _data = source._data
       _token = source._token
+      _userID = source._userID
     }
   }
 
@@ -166,6 +174,7 @@ extension Authorizationservice_Result: SwiftProtobuf.Message, SwiftProtobuf._Mes
         switch fieldNumber {
         case 1: try decoder.decodeSingularStringField(value: &_storage._data)
         case 2: try decoder.decodeSingularMessageField(value: &_storage._token)
+        case 3: try decoder.decodeSingularStringField(value: &_storage._userID)
         default: break
         }
       }
@@ -180,6 +189,9 @@ extension Authorizationservice_Result: SwiftProtobuf.Message, SwiftProtobuf._Mes
       if let v = _storage._token {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
       }
+      if !_storage._userID.isEmpty {
+        try visitor.visitSingularStringField(value: _storage._userID, fieldNumber: 3)
+      }
     }
     try unknownFields.traverse(visitor: &visitor)
   }
@@ -191,6 +203,7 @@ extension Authorizationservice_Result: SwiftProtobuf.Message, SwiftProtobuf._Mes
         let rhs_storage = _args.1
         if _storage._data != rhs_storage._data {return false}
         if _storage._token != rhs_storage._token {return false}
+        if _storage._userID != rhs_storage._userID {return false}
         return true
       }
       if !storagesAreEqual {return false}

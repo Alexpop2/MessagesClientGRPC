@@ -19,9 +19,11 @@ public struct MCAuthorizationData {
 public struct MCAuthorizationResult {
     public let data: String
     public let token: MCPerformMessageToken
+    public let userID: String
     
-    public init(data: String, token: MCPerformMessageToken) {
+    public init(data: String, token: MCPerformMessageToken, userID: String) {
         self.data = data
         self.token = token
+        self.userID = userID
     }
 }

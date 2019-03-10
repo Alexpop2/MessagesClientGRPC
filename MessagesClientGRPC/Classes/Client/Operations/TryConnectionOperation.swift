@@ -10,10 +10,10 @@ import Foundation
 
 class TryConnectionOperation: Foundation.Operation {
     private let completion: (Messageservice_Message) -> Void
-    private let messageClient: Messageservice_MessageServiceServiceClient
+    private let messageClient: Messageservice_MessageServiceServiceClient?
     private let setConnectionStateTrue: () -> Void
     
-    init(messageClient: Messageservice_MessageServiceServiceClient,
+    init(messageClient: Messageservice_MessageServiceServiceClient?,
          completion: @escaping (Messageservice_Message) -> Void, setConnectionStateTrue: @escaping () -> Void) {
         self.completion = completion
         self.messageClient = messageClient
@@ -35,7 +35,7 @@ class TryConnectionOperation: Foundation.Operation {
             if(isCancelled) {
                 return
             }
-            if(self.messageClient.channel.connectivityState(tryToConnect: true) == .ready) {
+            if(self.messageClient?.channel.connectivityState(tryToConnect: true) == .ready) {
                 if(!isCancelled) {
                     self.setConnectionStateTrue()
                     return
