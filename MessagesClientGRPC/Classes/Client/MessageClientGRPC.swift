@@ -11,10 +11,8 @@ import SwiftGRPC
 
 public class MessagesClientGRPC {
     
-    private let messageClient = Messageservice_MessageServiceServiceClient
-        .init(address: "185.22.232.125:50051", secure: false)
-    private let authorizationClient = Authorizationservice_AuthorizationServiceServiceClient
-        .init(address: "185.22.232.125:50051", secure: false)
+    private var messageClient: Messageservice_MessageServiceServiceClient?
+    private var authorizationClient: Authorizationservice_AuthorizationServiceServiceClient?
     
     private var connectionState = true
     
@@ -25,37 +23,47 @@ public class MessagesClientGRPC {
     private var authorizationCall: Authorizationservice_AuthorizationServiceAuthorizeCall?
     private var messageStreamCall: Messageservice_MessageServicePerformMessageStreamCall?
     
+    private var userID = ""
+    private var nickName = ""
     private var login = ""
     private var token = ""
     
-    public init() {}
+    public init(address: String) {
+        
+        messageClient = Messageservice_MessageServiceServiceClient.init(address: address, secure: false)
+        authorizationClient = Authorizationservice_AuthorizationServiceServiceClient.init(address: address, secure: false)
+        
+    }
     
     public func authorize(with authData: MCAuthorizationData, completion: @escaping (MCAuthorizationResult?, CallResult?) -> Void) {
         var firebaseToken = Authorizationservice_FirebaseToken()
         firebaseToken.data = authData.firebaseToken
         authorizationCall?.cancel()
         do {
-            authorizationCall = try self.authorizationClient.authorize(firebaseToken, completion: { (result, callResult) in
+            authorizationCall = try self.authorizationClient?.authorize(firebaseToken, completion: { (result, callResult) in
                 guard let result = result else {
-                    let authResult = MCAuthorizationResult(data: "Result is nil", token: MCPerformMessageToken(data: ""))
+                    let authResult = MCAuthorizationResult(data: "Result is nil", token: MCPerformMessageToken(data: ""), userID: "")
                     completion(authResult, callResult)
                     return
                 }
-                let authResult = MCAuthorizationResult(data: result.data, token: MCPerformMessageToken(data: result.token.data))
+                let authResult = MCAuthorizationResult(data: result.data, token: MCPerformMessageToken(data: result.token.data), userID: result.userID)
                 completion(authResult,callResult)
+                return
             })
         } catch {
-            let authResult = MCAuthorizationResult(data: "Authorize call error", token: MCPerformMessageToken(data: ""))
+            let authResult = MCAuthorizationResult(data: "Authorize call error", token: MCPerformMessageToken(data: ""), userID: "")
             completion(authResult, nil)
+            return
         }
     }
     
     public func send(message: MCMessage, completion: @escaping (CallResult?) -> Void) {
         var mcMessage = message.message
-        mcMessage.senderID = self.login
+        mcMessage.sender.id = self.userID
+        mcMessage.sender.nickName = self.nickName
         mcMessage.token = self.token
         do {
-            _ = try messageClient.send(mcMessage, completion: { (state, result) in
+            _ = try messageClient?.send(mcMessage, completion: { (state, result) in
                 DispatchQueue.main.async {
                     completion(result)
                 }
@@ -67,7 +75,7 @@ public class MessagesClientGRPC {
     
     func verifyGet(message: MCMessage, completion: @escaping (CallResult?) -> Void) {
         do {
-            _ = try messageClient.verifyGet(message.message, completion: { (state, result) in
+            _ = try messageClient?.verifyGet(message.message, completion: { (state, result) in
                 DispatchQueue.main.async {
                     completion(result)
                 }
@@ -84,6 +92,8 @@ public class MessagesClientGRPC {
         
         self.login = data.phone
         self.token = data.messageClientToken.data
+        self.userID = data.userID
+        self.nickName = data.userNickName
         
         connectionQueue.async {
             
@@ -104,7 +114,9 @@ public class MessagesClientGRPC {
                 }))
             } else {
                 do {
-                    let messageStream = try self.messageClient.performMessageStream(metadata: self.messageClient.metadata,
+                    guard let metadata = self.messageClient?.metadata else { return }
+                    
+                    let messageStream = try self.messageClient?.performMessageStream(metadata: metadata,
                                                                                     completion: { (call) in
                     })
                     self.messageStreamCall = messageStream
@@ -112,11 +124,12 @@ public class MessagesClientGRPC {
                     request.login = self.login
                     request.token = self.token
                     do {
-                        _ = try messageStream.send(request)
+                        _ = try messageStream?.send(request)
                         self.connectionState = true
                         self.loadMessageQueue.addOperation(LoadMessageOperation(login: self.login,
                                                                                 token: self.token,
                                                                                 messageStream: messageStream,
+                                                                                userID: self.userID,
                                                                                 completion: { message in
                                                                                     completion(MCMessage(GRPCMessage: message)) },
                                                                                 messageClientGRPC: self))

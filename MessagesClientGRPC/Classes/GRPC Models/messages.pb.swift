@@ -77,28 +77,85 @@ struct Messageservice_Empty {
   init() {}
 }
 
-struct Messageservice_Message {
+struct Messageservice_Receiver {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
   var id: String = String()
 
-  var text: String = String()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  var receiverID: String = String()
+  init() {}
+}
 
-  var token: String = String()
+struct Messageservice_Sender {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
 
-  var date: String = String()
+  var id: String = String()
 
-  var state: Messageservice_MessageState = .queued
-
-  var senderID: String = String()
+  var nickName: String = String()
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
   init() {}
+}
+
+struct Messageservice_Message {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  var id: String {
+    get {return _storage._id}
+    set {_uniqueStorage()._id = newValue}
+  }
+
+  var text: String {
+    get {return _storage._text}
+    set {_uniqueStorage()._text = newValue}
+  }
+
+  var receiver: Messageservice_Receiver {
+    get {return _storage._receiver ?? Messageservice_Receiver()}
+    set {_uniqueStorage()._receiver = newValue}
+  }
+  /// Returns true if `receiver` has been explicitly set.
+  var hasReceiver: Bool {return _storage._receiver != nil}
+  /// Clears the value of `receiver`. Subsequent reads from it will return its default value.
+  mutating func clearReceiver() {_uniqueStorage()._receiver = nil}
+
+  var token: String {
+    get {return _storage._token}
+    set {_uniqueStorage()._token = newValue}
+  }
+
+  var date: Int32 {
+    get {return _storage._date}
+    set {_uniqueStorage()._date = newValue}
+  }
+
+  var state: Messageservice_MessageState {
+    get {return _storage._state}
+    set {_uniqueStorage()._state = newValue}
+  }
+
+  var sender: Messageservice_Sender {
+    get {return _storage._sender ?? Messageservice_Sender()}
+    set {_uniqueStorage()._sender = newValue}
+  }
+  /// Returns true if `sender` has been explicitly set.
+  var hasSender: Bool {return _storage._sender != nil}
+  /// Clears the value of `sender`. Subsequent reads from it will return its default value.
+  mutating func clearSender() {_uniqueStorage()._sender = nil}
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
+
+  fileprivate var _storage = _StorageClass.defaultInstance
 }
 
 struct Messageservice_MessageStreamRequest {
@@ -147,28 +204,16 @@ extension Messageservice_Empty: SwiftProtobuf.Message, SwiftProtobuf._MessageImp
   }
 }
 
-extension Messageservice_Message: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".Message"
+extension Messageservice_Receiver: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = _protobuf_package + ".Receiver"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "id"),
-    2: .same(proto: "text"),
-    3: .same(proto: "receiverId"),
-    4: .same(proto: "token"),
-    5: .same(proto: "date"),
-    6: .same(proto: "state"),
-    7: .same(proto: "senderId"),
   ]
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.id)
-      case 2: try decoder.decodeSingularStringField(value: &self.text)
-      case 3: try decoder.decodeSingularStringField(value: &self.receiverID)
-      case 4: try decoder.decodeSingularStringField(value: &self.token)
-      case 5: try decoder.decodeSingularStringField(value: &self.date)
-      case 6: try decoder.decodeSingularEnumField(value: &self.state)
-      case 7: try decoder.decodeSingularStringField(value: &self.senderID)
       default: break
       }
     }
@@ -178,35 +223,155 @@ extension Messageservice_Message: SwiftProtobuf.Message, SwiftProtobuf._MessageI
     if !self.id.isEmpty {
       try visitor.visitSingularStringField(value: self.id, fieldNumber: 1)
     }
-    if !self.text.isEmpty {
-      try visitor.visitSingularStringField(value: self.text, fieldNumber: 2)
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: Messageservice_Receiver, rhs: Messageservice_Receiver) -> Bool {
+    if lhs.id != rhs.id {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Messageservice_Sender: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = _protobuf_package + ".Sender"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "id"),
+    2: .same(proto: "nickName"),
+  ]
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      switch fieldNumber {
+      case 1: try decoder.decodeSingularStringField(value: &self.id)
+      case 2: try decoder.decodeSingularStringField(value: &self.nickName)
+      default: break
+      }
     }
-    if !self.receiverID.isEmpty {
-      try visitor.visitSingularStringField(value: self.receiverID, fieldNumber: 3)
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.id.isEmpty {
+      try visitor.visitSingularStringField(value: self.id, fieldNumber: 1)
     }
-    if !self.token.isEmpty {
-      try visitor.visitSingularStringField(value: self.token, fieldNumber: 4)
+    if !self.nickName.isEmpty {
+      try visitor.visitSingularStringField(value: self.nickName, fieldNumber: 2)
     }
-    if !self.date.isEmpty {
-      try visitor.visitSingularStringField(value: self.date, fieldNumber: 5)
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: Messageservice_Sender, rhs: Messageservice_Sender) -> Bool {
+    if lhs.id != rhs.id {return false}
+    if lhs.nickName != rhs.nickName {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Messageservice_Message: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = _protobuf_package + ".Message"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "id"),
+    2: .same(proto: "text"),
+    3: .same(proto: "receiver"),
+    4: .same(proto: "token"),
+    5: .same(proto: "date"),
+    6: .same(proto: "state"),
+    7: .same(proto: "sender"),
+  ]
+
+  fileprivate class _StorageClass {
+    var _id: String = String()
+    var _text: String = String()
+    var _receiver: Messageservice_Receiver? = nil
+    var _token: String = String()
+    var _date: Int32 = 0
+    var _state: Messageservice_MessageState = .queued
+    var _sender: Messageservice_Sender? = nil
+
+    static let defaultInstance = _StorageClass()
+
+    private init() {}
+
+    init(copying source: _StorageClass) {
+      _id = source._id
+      _text = source._text
+      _receiver = source._receiver
+      _token = source._token
+      _date = source._date
+      _state = source._state
+      _sender = source._sender
     }
-    if self.state != .queued {
-      try visitor.visitSingularEnumField(value: self.state, fieldNumber: 6)
+  }
+
+  fileprivate mutating func _uniqueStorage() -> _StorageClass {
+    if !isKnownUniquelyReferenced(&_storage) {
+      _storage = _StorageClass(copying: _storage)
     }
-    if !self.senderID.isEmpty {
-      try visitor.visitSingularStringField(value: self.senderID, fieldNumber: 7)
+    return _storage
+  }
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    _ = _uniqueStorage()
+    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
+      while let fieldNumber = try decoder.nextFieldNumber() {
+        switch fieldNumber {
+        case 1: try decoder.decodeSingularStringField(value: &_storage._id)
+        case 2: try decoder.decodeSingularStringField(value: &_storage._text)
+        case 3: try decoder.decodeSingularMessageField(value: &_storage._receiver)
+        case 4: try decoder.decodeSingularStringField(value: &_storage._token)
+        case 5: try decoder.decodeSingularInt32Field(value: &_storage._date)
+        case 6: try decoder.decodeSingularEnumField(value: &_storage._state)
+        case 7: try decoder.decodeSingularMessageField(value: &_storage._sender)
+        default: break
+        }
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
+      if !_storage._id.isEmpty {
+        try visitor.visitSingularStringField(value: _storage._id, fieldNumber: 1)
+      }
+      if !_storage._text.isEmpty {
+        try visitor.visitSingularStringField(value: _storage._text, fieldNumber: 2)
+      }
+      if let v = _storage._receiver {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 3)
+      }
+      if !_storage._token.isEmpty {
+        try visitor.visitSingularStringField(value: _storage._token, fieldNumber: 4)
+      }
+      if _storage._date != 0 {
+        try visitor.visitSingularInt32Field(value: _storage._date, fieldNumber: 5)
+      }
+      if _storage._state != .queued {
+        try visitor.visitSingularEnumField(value: _storage._state, fieldNumber: 6)
+      }
+      if let v = _storage._sender {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 7)
+      }
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
   static func ==(lhs: Messageservice_Message, rhs: Messageservice_Message) -> Bool {
-    if lhs.id != rhs.id {return false}
-    if lhs.text != rhs.text {return false}
-    if lhs.receiverID != rhs.receiverID {return false}
-    if lhs.token != rhs.token {return false}
-    if lhs.date != rhs.date {return false}
-    if lhs.state != rhs.state {return false}
-    if lhs.senderID != rhs.senderID {return false}
+    if lhs._storage !== rhs._storage {
+      let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
+        let _storage = _args.0
+        let rhs_storage = _args.1
+        if _storage._id != rhs_storage._id {return false}
+        if _storage._text != rhs_storage._text {return false}
+        if _storage._receiver != rhs_storage._receiver {return false}
+        if _storage._token != rhs_storage._token {return false}
+        if _storage._date != rhs_storage._date {return false}
+        if _storage._state != rhs_storage._state {return false}
+        if _storage._sender != rhs_storage._sender {return false}
+        return true
+      }
+      if !storagesAreEqual {return false}
+    }
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
