@@ -51,8 +51,8 @@ struct Authorizationservice_Result {
     set {_uniqueStorage()._data = newValue}
   }
 
-  var token: Authorizationservice_MessangerToken {
-    get {return _storage._token ?? Authorizationservice_MessangerToken()}
+  var token: Authorizationservice_FirebaseCustomToken {
+    get {return _storage._token ?? Authorizationservice_FirebaseCustomToken()}
     set {_uniqueStorage()._token = newValue}
   }
   /// Returns true if `token` has been explicitly set.
@@ -72,7 +72,7 @@ struct Authorizationservice_Result {
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-struct Authorizationservice_MessangerToken {
+struct Authorizationservice_FirebaseCustomToken {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -146,7 +146,7 @@ extension Authorizationservice_Result: SwiftProtobuf.Message, SwiftProtobuf._Mes
 
   fileprivate class _StorageClass {
     var _data: String = String()
-    var _token: Authorizationservice_MessangerToken? = nil
+    var _token: Authorizationservice_FirebaseCustomToken? = nil
     var _userID: String = String()
 
     static let defaultInstance = _StorageClass()
@@ -213,8 +213,8 @@ extension Authorizationservice_Result: SwiftProtobuf.Message, SwiftProtobuf._Mes
   }
 }
 
-extension Authorizationservice_MessangerToken: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".MessangerToken"
+extension Authorizationservice_FirebaseCustomToken: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = _protobuf_package + ".FirebaseCustomToken"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "data"),
   ]
@@ -235,7 +235,7 @@ extension Authorizationservice_MessangerToken: SwiftProtobuf.Message, SwiftProto
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Authorizationservice_MessangerToken, rhs: Authorizationservice_MessangerToken) -> Bool {
+  static func ==(lhs: Authorizationservice_FirebaseCustomToken, rhs: Authorizationservice_FirebaseCustomToken) -> Bool {
     if lhs.data != rhs.data {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true

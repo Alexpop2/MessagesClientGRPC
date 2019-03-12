@@ -16,10 +16,10 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "MessagesClientGRPC"
-  s.version      = "0.0.2"
+  s.version      = "0.0.3"
   s.summary      = "Beetlab messages client."
   s.platform = :ios
-  s.ios.deployment_target = '12.0'
+  s.ios.deployment_target = '8.0'
   s.swift_version = "4.2"
 
   # This description is used to generate tags and improve search results.
