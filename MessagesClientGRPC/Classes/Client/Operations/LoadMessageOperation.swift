@@ -15,20 +15,20 @@ class LoadMessageOperation: Foundation.Operation {
     private let login: String
     private let token: String
     private let messageStream: Messageservice_MessageServicePerformMessageStreamCall?
-    private let messageClientGRPC: MessagesClientGRPC
+    private let messageService: MessageService
     
     init(login: String,
          token: String,
          messageStream: Messageservice_MessageServicePerformMessageStreamCall?,
          userID: String,
          completion: @escaping (Messageservice_Message) -> Void,
-         messageClientGRPC: MessagesClientGRPC) {
+         messageService: MessageService) {
         self.completion = completion
         self.userID = userID
         self.login = login
         self.token = token
         self.messageStream = messageStream
-        self.messageClientGRPC = messageClientGRPC
+        self.messageService = messageService
     }
     
     override func main() {
@@ -55,7 +55,7 @@ class LoadMessageOperation: Foundation.Operation {
                 if(message != nil) {
                     DispatchQueue.main.async {
                         if(message?.state == .sending && message?.receiver.id == self.userID) {
-                            self.messageClientGRPC.verifyGet(message: MCMessage(GRPCMessage: message!), completion: { (result) in
+                            self.messageService.verifyGet(message: MCMessage(GRPCMessage: message!), completion: { (result) in
                             })
                             message!.state = .delivered
                         }
