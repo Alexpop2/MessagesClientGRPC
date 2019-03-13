@@ -10,6 +10,12 @@
 		60144DA0223841C700569EC8 /* MCUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60144D9F223841C700569EC8 /* MCUser.swift */; };
 		601D69F822383F5F00EF8C0A /* users.grpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601D69F622383F5F00EF8C0A /* users.grpc.swift */; };
 		601D69F922383F5F00EF8C0A /* users.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601D69F722383F5F00EF8C0A /* users.pb.swift */; };
+		6094164722398BED0072920D /* IMessageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6094164622398BED0072920D /* IMessageService.swift */; };
+		6094164922398F420072920D /* MessageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6094164822398F420072920D /* MessageService.swift */; };
+		6094164B223992EA0072920D /* IAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6094164A223992EA0072920D /* IAuthService.swift */; };
+		6094164D223992F50072920D /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6094164C223992F50072920D /* AuthService.swift */; };
+		6094164F223993E80072920D /* IUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6094164E223993E80072920D /* IUserService.swift */; };
+		60941651223993F00072920D /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60941650223993F00072920D /* UserService.swift */; };
 		60D702582231F8BC004308A5 /* MessagesClientGRPC.h in Headers */ = {isa = PBXBuildFile; fileRef = 60D702562231F8BC004308A5 /* MessagesClientGRPC.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		60D7026D2231F8C7004308A5 /* authorization.grpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D702602231F8C7004308A5 /* authorization.grpc.swift */; };
 		60D7026E2231F8C7004308A5 /* messages.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D702612231F8C7004308A5 /* messages.pb.swift */; };
@@ -18,7 +24,7 @@
 		60D702712231F8C7004308A5 /* MCAuthorizationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D702652231F8C7004308A5 /* MCAuthorizationData.swift */; };
 		60D702722231F8C7004308A5 /* MCPerformMessageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D702662231F8C7004308A5 /* MCPerformMessageData.swift */; };
 		60D702732231F8C7004308A5 /* MCMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D702672231F8C7004308A5 /* MCMessage.swift */; };
-		60D702742231F8C7004308A5 /* MessageClientGRPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D702692231F8C7004308A5 /* MessageClientGRPC.swift */; };
+		60D702742231F8C7004308A5 /* NetworkingClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D702692231F8C7004308A5 /* NetworkingClient.swift */; };
 		60D702752231F8C7004308A5 /* TryConnectionOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D7026B2231F8C7004308A5 /* TryConnectionOperation.swift */; };
 		60D702762231F8C7004308A5 /* LoadMessageOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D7026C2231F8C7004308A5 /* LoadMessageOperation.swift */; };
 		BF5DBAC32389BC58D538AD7D /* libPods-MessagesClientGRPC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA0D4C2BBB71DA8FD9752296 /* libPods-MessagesClientGRPC.a */; };
@@ -29,6 +35,12 @@
 		60144D9F223841C700569EC8 /* MCUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCUser.swift; sourceTree = "<group>"; };
 		601D69F622383F5F00EF8C0A /* users.grpc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = users.grpc.swift; sourceTree = "<group>"; };
 		601D69F722383F5F00EF8C0A /* users.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = users.pb.swift; sourceTree = "<group>"; };
+		6094164622398BED0072920D /* IMessageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMessageService.swift; sourceTree = "<group>"; };
+		6094164822398F420072920D /* MessageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageService.swift; sourceTree = "<group>"; };
+		6094164A223992EA0072920D /* IAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAuthService.swift; sourceTree = "<group>"; };
+		6094164C223992F50072920D /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		6094164E223993E80072920D /* IUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IUserService.swift; sourceTree = "<group>"; };
+		60941650223993F00072920D /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		60D702532231F8BC004308A5 /* MessagesClientGRPC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MessagesClientGRPC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		60D702562231F8BC004308A5 /* MessagesClientGRPC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessagesClientGRPC.h; sourceTree = "<group>"; };
 		60D702572231F8BC004308A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -39,7 +51,7 @@
 		60D702652231F8C7004308A5 /* MCAuthorizationData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MCAuthorizationData.swift; sourceTree = "<group>"; };
 		60D702662231F8C7004308A5 /* MCPerformMessageData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MCPerformMessageData.swift; sourceTree = "<group>"; };
 		60D702672231F8C7004308A5 /* MCMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MCMessage.swift; sourceTree = "<group>"; };
-		60D702692231F8C7004308A5 /* MessageClientGRPC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageClientGRPC.swift; sourceTree = "<group>"; };
+		60D702692231F8C7004308A5 /* NetworkingClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingClient.swift; sourceTree = "<group>"; };
 		60D7026B2231F8C7004308A5 /* TryConnectionOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TryConnectionOperation.swift; sourceTree = "<group>"; };
 		60D7026C2231F8C7004308A5 /* LoadMessageOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadMessageOperation.swift; sourceTree = "<group>"; };
 		AA0D4C2BBB71DA8FD9752296 /* libPods-MessagesClientGRPC.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MessagesClientGRPC.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -58,6 +70,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6094164222398BBE0072920D /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				6094164522398BDE0072920D /* UserService */,
+				6094164422398BD70072920D /* AuthService */,
+				6094164322398BCC0072920D /* MessageService */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		6094164322398BCC0072920D /* MessageService */ = {
+			isa = PBXGroup;
+			children = (
+				6094164622398BED0072920D /* IMessageService.swift */,
+				6094164822398F420072920D /* MessageService.swift */,
+			);
+			path = MessageService;
+			sourceTree = "<group>";
+		};
+		6094164422398BD70072920D /* AuthService */ = {
+			isa = PBXGroup;
+			children = (
+				6094164A223992EA0072920D /* IAuthService.swift */,
+				6094164C223992F50072920D /* AuthService.swift */,
+			);
+			path = AuthService;
+			sourceTree = "<group>";
+		};
+		6094164522398BDE0072920D /* UserService */ = {
+			isa = PBXGroup;
+			children = (
+				6094164E223993E80072920D /* IUserService.swift */,
+				60941650223993F00072920D /* UserService.swift */,
+			);
+			path = UserService;
+			sourceTree = "<group>";
+		};
 		60D702492231F8BC004308A5 = {
 			isa = PBXGroup;
 			children = (
@@ -123,8 +172,9 @@
 		60D702682231F8C7004308A5 /* Client */ = {
 			isa = PBXGroup;
 			children = (
+				6094164222398BBE0072920D /* Services */,
 				60D7026A2231F8C7004308A5 /* Operations */,
-				60D702692231F8C7004308A5 /* MessageClientGRPC.swift */,
+				60D702692231F8C7004308A5 /* NetworkingClient.swift */,
 			);
 			path = Client;
 			sourceTree = "<group>";
@@ -261,16 +311,22 @@
 			files = (
 				60D702712231F8C7004308A5 /* MCAuthorizationData.swift in Sources */,
 				60D702722231F8C7004308A5 /* MCPerformMessageData.swift in Sources */,
-				60D702742231F8C7004308A5 /* MessageClientGRPC.swift in Sources */,
+				60D702742231F8C7004308A5 /* NetworkingClient.swift in Sources */,
+				6094164722398BED0072920D /* IMessageService.swift in Sources */,
 				60D7026E2231F8C7004308A5 /* messages.pb.swift in Sources */,
 				60D7026D2231F8C7004308A5 /* authorization.grpc.swift in Sources */,
 				60D702762231F8C7004308A5 /* LoadMessageOperation.swift in Sources */,
 				60D702752231F8C7004308A5 /* TryConnectionOperation.swift in Sources */,
 				60D702732231F8C7004308A5 /* MCMessage.swift in Sources */,
+				6094164B223992EA0072920D /* IAuthService.swift in Sources */,
 				60D702702231F8C7004308A5 /* authorization.pb.swift in Sources */,
+				6094164922398F420072920D /* MessageService.swift in Sources */,
 				601D69F822383F5F00EF8C0A /* users.grpc.swift in Sources */,
+				60941651223993F00072920D /* UserService.swift in Sources */,
 				60D7026F2231F8C7004308A5 /* messages.grpc.swift in Sources */,
+				6094164D223992F50072920D /* AuthService.swift in Sources */,
 				601D69F922383F5F00EF8C0A /* users.pb.swift in Sources */,
+				6094164F223993E80072920D /* IUserService.swift in Sources */,
 				60144DA0223841C700569EC8 /* MCUser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
