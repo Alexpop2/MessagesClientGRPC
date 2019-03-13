@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		60144DA0223841C700569EC8 /* MCUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60144D9F223841C700569EC8 /* MCUser.swift */; };
+		601D69F822383F5F00EF8C0A /* users.grpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601D69F622383F5F00EF8C0A /* users.grpc.swift */; };
+		601D69F922383F5F00EF8C0A /* users.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601D69F722383F5F00EF8C0A /* users.pb.swift */; };
 		60D702582231F8BC004308A5 /* MessagesClientGRPC.h in Headers */ = {isa = PBXBuildFile; fileRef = 60D702562231F8BC004308A5 /* MessagesClientGRPC.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		60D7026D2231F8C7004308A5 /* authorization.grpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D702602231F8C7004308A5 /* authorization.grpc.swift */; };
 		60D7026E2231F8C7004308A5 /* messages.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D702612231F8C7004308A5 /* messages.pb.swift */; };
@@ -23,6 +26,9 @@
 
 /* Begin PBXFileReference section */
 		17CD76BE9A5A493ECAC8924F /* Pods-MessagesClientGRPC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MessagesClientGRPC.release.xcconfig"; path = "Pods/Target Support Files/Pods-MessagesClientGRPC/Pods-MessagesClientGRPC.release.xcconfig"; sourceTree = "<group>"; };
+		60144D9F223841C700569EC8 /* MCUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCUser.swift; sourceTree = "<group>"; };
+		601D69F622383F5F00EF8C0A /* users.grpc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = users.grpc.swift; sourceTree = "<group>"; };
+		601D69F722383F5F00EF8C0A /* users.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = users.pb.swift; sourceTree = "<group>"; };
 		60D702532231F8BC004308A5 /* MessagesClientGRPC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MessagesClientGRPC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		60D702562231F8BC004308A5 /* MessagesClientGRPC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessagesClientGRPC.h; sourceTree = "<group>"; };
 		60D702572231F8BC004308A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -93,6 +99,8 @@
 		60D7025F2231F8C7004308A5 /* GRPC Models */ = {
 			isa = PBXGroup;
 			children = (
+				601D69F622383F5F00EF8C0A /* users.grpc.swift */,
+				601D69F722383F5F00EF8C0A /* users.pb.swift */,
 				60D702602231F8C7004308A5 /* authorization.grpc.swift */,
 				60D702612231F8C7004308A5 /* messages.pb.swift */,
 				60D702622231F8C7004308A5 /* messages.grpc.swift */,
@@ -107,6 +115,7 @@
 				60D702652231F8C7004308A5 /* MCAuthorizationData.swift */,
 				60D702662231F8C7004308A5 /* MCPerformMessageData.swift */,
 				60D702672231F8C7004308A5 /* MCMessage.swift */,
+				60144D9F223841C700569EC8 /* MCUser.swift */,
 			);
 			path = "Proxy Models";
 			sourceTree = "<group>";
@@ -259,7 +268,10 @@
 				60D702752231F8C7004308A5 /* TryConnectionOperation.swift in Sources */,
 				60D702732231F8C7004308A5 /* MCMessage.swift in Sources */,
 				60D702702231F8C7004308A5 /* authorization.pb.swift in Sources */,
+				601D69F822383F5F00EF8C0A /* users.grpc.swift in Sources */,
 				60D7026F2231F8C7004308A5 /* messages.grpc.swift in Sources */,
+				601D69F922383F5F00EF8C0A /* users.pb.swift in Sources */,
+				60144DA0223841C700569EC8 /* MCUser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -401,6 +413,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = MessagesClientGRPC/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -427,6 +440,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = MessagesClientGRPC/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
