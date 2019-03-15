@@ -88,5 +88,89 @@ Message model
 ```swift
 init(text: String, receiver: MCReceiver) 
 ```
+---
+
+## ```MCPerformMessageData```
+
+### Description
+
+Perform message struct
+
+### Fields
+
+| field | type | get/set | description |
+| ------ | ------ | ------ | ------ |
+| ```phone``` | **```String```** |  get |  Message ID |
+| ```messageClientToken``` | **```MCFirebaseToken```** |  get |  Firebase token |
+| ```userID``` | **```String```** |  get |  User ID |
+| ```userNickName``` | **```String```** |  get |  User Nickname |
+
+### Init
+
+```swift
+init(phone: String, messageClientToken: MCFirebaseToken, userID: String, userNickName: String)
+```
+
+---
+
+## ```MCFirebaseToken```
+
+### Description
+
+Firebase token struct
+
+### Fields
+
+| field | type | get/set | description |
+| ------ | ------ | ------ | ------ |
+| ```data``` | **```String```** |  get |  Firebase token |
+
+### Init
+
+```swift
+init(data: String)
+```
+
+---
+
+## ```MCFirebaseCustomToken```
+
+### Description
+
+Firebase custom token struct (Not used from version ```0.0.5```)
+
+### Fields
+
+| field | type | get/set | description |
+| ------ | ------ | ------ | ------ |
+| ```data``` | **```String```** |  get |  Firebase custom token |
+
+### Init
+
+```swift
+init(data: String)
+```
+
+---
+
+## ```MCAuthorizationResult```
+
+### Description
+
+Authorization result struct
+
+### Fields
+
+| field | type | get/set | description |
+| ------ | ------ | ------ | ------ |
+| ```data``` | **```String```** |  get |  Result string (```Successful``` or GRPC error) |
+| ```token``` | **```MCFirebaseCustomToken```** |  get |  Firebase custom token (not used from version ```0.0.5```) |
+| ```userID``` | **```String```** |  get |  User ID |
+
+### Init
+
+```swift
+init(data: String, token: MCFirebaseCustomToken, userID: String)
+```
 
 ---
