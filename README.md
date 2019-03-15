@@ -36,6 +36,6 @@ NetworkingClient.configure(address: "domain.example.com:port",
 | Models | [documentation/models/README.md][PlMS] |
 
 
-   [PlNC]: <https://github.com/Alexpop2/MessagesClientGRPC/tree/master/MessagesClientGRPC/documentation/networkingclient/README.md>
-   [PlSS]: <https://github.com/Alexpop2/MessagesClientGRPC/tree/master/MessagesClientGRPC/documentation/services/README.md>
-   [PlMS]: <https://github.com/Alexpop2/MessagesClientGRPC/tree/master/MessagesClientGRPC/documentation/models/README.md>
+   [PlNC]: <https://github.com/Alexpop2/MessagesClientGRPC/tree/master/documentation/networkingclient/README.md>
+   [PlSS]: <https://github.com/Alexpop2/MessagesClientGRPC/tree/master/documentation/services/README.md>
+   [PlMS]: <https://github.com/Alexpop2/MessagesClientGRPC/blob/master/documentation/models/README.md>

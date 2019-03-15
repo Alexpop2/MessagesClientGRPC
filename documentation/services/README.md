@@ -3,7 +3,8 @@
 Services protocols that working with server
 
 **Note:**
-Possible call result for all callbacks with ```CallResult``` :
+Possible call result for all callbacks with ```CallResult```:
+
 | GRPC Code | description |
 | ------ | ------ |
 | ```OK``` |  Completed with no errors |
