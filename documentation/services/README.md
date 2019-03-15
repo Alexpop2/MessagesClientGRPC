@@ -20,12 +20,15 @@ func setUserName(token: String, name: String, completion: @escaping (CallResult?
 Setting user name method
 
 **Arguments:**
+
 | argument | description |
 | ------ | ------ |
 | ```token``` |  Firebase token |
 | ```name``` | Name to set |
 | ```completion``` | Result callback |
+
 **CallResult Errors:**
+
 | GRPC Code | description |
 | ------ | ------ |
 | ```UNAUTHENTICATED``` |  Token check failed |
@@ -40,15 +43,19 @@ func getUserBy(phone: String, completion: @escaping (MCUser?, CallResult?) -> Vo
 Get user by phone
 
 **Arguments:**
+
 | argument | description |
 | ------ | ------ |
 | ```phone``` | User's phone to find |
 | ```completion``` | User and result callback |
+
 **CallResult Errors:**
+
 | GRPC Code | description |
 | ------ | ------ |
 | ```UNAUTHENTICATED``` |  Token check failed |
 | ```NOT_FOUND``` | User with this phone not registered |
+
 **Notes:**
 - Must perform message stream first
 ---
@@ -59,15 +66,19 @@ func getUserBy(id: String, completion: @escaping (MCUser?, CallResult?) -> Void)
 Get user by ID
 
 **Arguments:**
+
 | argument | description |
 | ------ | ------ |
 | ```id``` | User's id to find |
 | ```completion``` | User and result callback |
+
 **CallResult Errors:**
+
 | GRPC Code | description |
 | ------ | ------ |
 | ```UNAUTHENTICATED``` |  Token check failed |
 | ```NOT_FOUND``` | User with this name not registered |
+
 **Notes:**
 - This method return user with ```nil``` phone
 - Must perform message stream first
@@ -79,15 +90,19 @@ func getUserBy(name: String, completion: @escaping (MCUser?, CallResult?) -> Voi
 Get user by name
 
 **Arguments:**
+
 | argument | description |
 | ------ | ------ |
 | ```name``` | User's name to find |
 | ```completion``` | User and result callback |
+
 **CallResult Errors:**
+
 | GRPC Code | description |
 | ------ | ------ |
 | ```UNAUTHENTICATED``` |  Token check failed |
 | ```NOT_FOUND``` | User with this id not registered |
+
 **Notes:**
 - This method return user with ```nil``` phone
 - Must perform message stream first
@@ -100,14 +115,18 @@ func getKnownRegisteredUsersBy(phones: [String], completion: @escaping ([MCUser]
 Get registered users with phones string array.
 
 **Arguments:**
+
 | argument | description |
 | ------ | ------ |
 | ```phones``` | Users phones in array |
 | ```completion``` | Registered users list and result callback |
+
 **CallResult Errors:**
+
 | GRPC Code | description |
 | ------ | ------ |
 | ```UNAUTHENTICATED``` |  Token check failed |
+
 **Notes:**
 - This method return user with ```nil``` phone
 - Must perform message stream first
@@ -124,10 +143,12 @@ func authorize(with token: MCFirebaseToken, completion: @escaping (MCAuthorizati
 Authorization on server method
 
 **Arguments:**
+
 | argument | description |
 | ------ | ------ |
 | ```token``` |  Firebase token |
 | ```completion``` | Result callback |
+
 ---
 
 ## ```IMCMessageService```
@@ -141,15 +162,19 @@ func send(message: MCMessage, completion: @escaping (CallResult?) -> Void)
 Method for send message.
 
 **Arguments:**
+
 | argument | description |
 | ------ | ------ |
 | ```token``` |  Firebase token |
 | ```completion``` | Result callback |
+
 **CallResult Errors:**
+
 | GRPC Code | description |
 | ------ | ------ |
 | ```UNAUTHENTICATED``` |  Token check failed |
 | ```NOT_FOUND``` | Receiver user not registered |
+
 **Notes:**
 - Must perform message stream first
 ---
@@ -160,8 +185,10 @@ func performMessageStream(data: MCPerformMessageData, completion: @escaping (MCM
 Perform message stream
 
 **Arguments:**
+
 | argument | description |
 | ------ | ------ |
 | ```data``` |  Perform message data |
 | ```completion``` | Receiving messages from server |
+
 ---
