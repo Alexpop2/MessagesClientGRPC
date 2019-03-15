@@ -128,7 +128,6 @@ Get registered users with phones string array.
 | ```UNAUTHENTICATED``` |  Token check failed |
 
 **Notes:**
-- This method return user with ```nil``` phone
 - Must perform message stream first
 ---
 
