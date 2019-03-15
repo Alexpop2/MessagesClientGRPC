@@ -9,6 +9,38 @@ Possible call result for all callbacks with ```CallResult```:
 | ------ | ------ |
 | ```OK``` |  Completed with no errors |
 
+## ```IMCNetworkService```
+
+### Functions
+
+```swift
+func addConnectivityObserver(callback: @escaping (Channel.ConnectivityState) -> Void)
+```
+**Description:**
+Connection state observer
+
+**Arguments:**
+
+| argument | description |
+| ------ | ------ |
+| ```callback``` | Result callback closure |
+
+---
+
+```swift
+func getCurrentConnectionState(callback: @escaping(Channel.ConnectivityState) -> Void)
+```
+**Description:**
+Get current connection state
+
+**Arguments:**
+
+| argument | description |
+| ------ | ------ |
+| ```callback``` | Result callback closure |
+
+---
+
 ## ```IMCUserService```
 
 ### Functions
@@ -16,6 +48,9 @@ Possible call result for all callbacks with ```CallResult```:
 ```swift
 func setUserName(token: String, name: String, completion: @escaping (CallResult?) -> Void)
 ```
+**Parent protocol:**
+```IMCNetworkService```
+
 **Description:**
 Setting user name method
 
@@ -138,6 +173,9 @@ Get registered users with phones string array.
 ```swift
 func authorize(with token: MCFirebaseToken, completion: @escaping (MCAuthorizationResult?, CallResult?) -> Void)
 ```
+**Parent protocol:**
+```IMCNetworkService```
+
 **Description:**
 Authorization on server method
 
@@ -157,6 +195,9 @@ Authorization on server method
 ```swift
 func send(message: MCMessage, completion: @escaping (CallResult?) -> Void)
 ```
+**Parent protocol:**
+```IMCNetworkService```
+
 **Description:**
 Method for send message.
 
