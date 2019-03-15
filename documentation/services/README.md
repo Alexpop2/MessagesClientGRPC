@@ -43,13 +43,14 @@ Get current connection state
 
 ## ```IMCUserService```
 
+**Parent protocol:**
+```IMCNetworkService```
+
 ### Functions
 
 ```swift
 func setUserName(token: String, name: String, completion: @escaping (CallResult?) -> Void)
 ```
-**Parent protocol:**
-```IMCNetworkService```
 
 **Description:**
 Setting user name method
@@ -168,13 +169,15 @@ Get registered users with phones string array.
 
 ## ```IMCAuthService```
 
+**Parent protocol:**
+```IMCNetworkService```
+
+
 ### Functions
 
 ```swift
 func authorize(with token: MCFirebaseToken, completion: @escaping (MCAuthorizationResult?, CallResult?) -> Void)
 ```
-**Parent protocol:**
-```IMCNetworkService```
 
 **Description:**
 Authorization on server method
@@ -190,13 +193,14 @@ Authorization on server method
 
 ## ```IMCMessageService```
 
+**Parent protocol:**
+```IMCNetworkService```
+
 ### Functions
 
 ```swift
 func send(message: MCMessage, completion: @escaping (CallResult?) -> Void)
 ```
-**Parent protocol:**
-```IMCNetworkService```
 
 **Description:**
 Method for send message.
