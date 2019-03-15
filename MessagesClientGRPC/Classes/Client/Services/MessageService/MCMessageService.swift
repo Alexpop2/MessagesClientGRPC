@@ -9,7 +9,7 @@
 import Foundation
 import SwiftGRPC
 
-class MessageService {
+class MCMessageService {
     
     private var messageClient: Messageservice_MessageServiceServiceClient?
     private var messageStreamCall: Messageservice_MessageServicePerformMessageStreamCall?
@@ -42,7 +42,12 @@ class MessageService {
     }
     
 }
-extension MessageService: IMessageService {
+extension MCMessageService: IMCMessageService {
+    
+    func getCurrentConnectionState(callback: @escaping (Channel.ConnectivityState) -> Void) {
+        guard let client = messageClient else { return }
+        callback(client.channel.connectivityState())
+    }
     
     func addConnectivityObserver(callback: @escaping (Channel.ConnectivityState) -> Void) {
         messageClient?.channel.addConnectivityObserver(callback: callback)

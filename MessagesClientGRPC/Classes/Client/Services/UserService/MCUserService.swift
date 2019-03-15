@@ -9,7 +9,7 @@
 import Foundation
 import SwiftGRPC
 
-class UserService {
+class MCUserService {
     
     private var usersClient: Userservice_UserServiceServiceClient?
     
@@ -30,17 +30,22 @@ class UserService {
     
 }
 
-extension UserService: IUserService {
+extension MCUserService: IMCUserService {
+    
+    func getCurrentConnectionState(callback: @escaping (Channel.ConnectivityState) -> Void) {
+        guard let client = usersClient else { return }
+        callback(client.channel.connectivityState())
+    }
     
     func addConnectivityObserver(callback: @escaping (Channel.ConnectivityState) -> Void) {
         usersClient?.channel.addConnectivityObserver(callback: callback)
     }
     
-    func setUserName(name: String, completion: @escaping (CallResult?) -> Void) {
+    func setUserName(token: String, name: String, completion: @escaping (CallResult?) -> Void) {
         
-        var userName = Userservice_Name();
+        var userName = Userservice_Name()
         userName.data = name
-        userName.token = self.token
+        userName.token = token
         
         do {
             _ = try usersClient?.setUserName(userName, completion: { (empty, result) in
@@ -53,7 +58,7 @@ extension UserService: IUserService {
     
     func getUserBy(phone: String, completion: @escaping (MCUser?, CallResult?) -> Void) {
         
-        var servicePhone = Userservice_Phone();
+        var servicePhone = Userservice_Phone()
         servicePhone.data = phone
         servicePhone.token = self.token
         
@@ -71,7 +76,7 @@ extension UserService: IUserService {
     
     func getUserBy(id: String, completion: @escaping (MCUser?, CallResult?) -> Void) {
         
-        var servicePhone = Userservice_ID();
+        var servicePhone = Userservice_ID()
         servicePhone.data = id
         servicePhone.token = self.token
         
@@ -89,7 +94,7 @@ extension UserService: IUserService {
     
     func getUserBy(name: String, completion: @escaping (MCUser?, CallResult?) -> Void) {
         
-        var servicePhone = Userservice_Name();
+        var servicePhone = Userservice_Name()
         servicePhone.data = name
         servicePhone.token = self.token
         
@@ -107,7 +112,7 @@ extension UserService: IUserService {
     
     func getKnownRegisteredUsersBy(phones: [String], completion: @escaping ([MCUser], CallResult?) -> Void) {
         
-        var servicePhones = Userservice_Phones();
+        var servicePhones = Userservice_Phones()
         servicePhones.phones = phones
         servicePhones.token = self.token
         do {

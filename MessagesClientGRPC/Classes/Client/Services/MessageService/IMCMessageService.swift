@@ -9,8 +9,7 @@
 import Foundation
 import SwiftGRPC
 
-public protocol IMessageService {
+public protocol IMCMessageService: IMCNetworkService {
     func send(message: MCMessage, completion: @escaping (CallResult?) -> Void)
     func performMessageStream(data: MCPerformMessageData, completion: @escaping (MCMessage) -> Void)
-    func addConnectivityObserver(callback: @escaping (Channel.ConnectivityState) -> Void)
 }

@@ -15,14 +15,14 @@ class LoadMessageOperation: Foundation.Operation {
     private let login: String
     private let token: String
     private let messageStream: Messageservice_MessageServicePerformMessageStreamCall?
-    private let messageService: MessageService
+    private let messageService: MCMessageService
     
     init(login: String,
          token: String,
          messageStream: Messageservice_MessageServicePerformMessageStreamCall?,
          userID: String,
          completion: @escaping (Messageservice_Message) -> Void,
-         messageService: MessageService) {
+         messageService: MCMessageService) {
         self.completion = completion
         self.userID = userID
         self.login = login

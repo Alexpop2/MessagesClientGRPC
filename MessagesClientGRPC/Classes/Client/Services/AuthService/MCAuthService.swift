@@ -9,7 +9,7 @@
 import Foundation
 import SwiftGRPC
 
-class AuthService {
+class MCAuthService {
     
     private var authorizationClient: Authorizationservice_AuthorizationServiceServiceClient?
     private var authorizationCall: Authorizationservice_AuthorizationServiceAuthorizeCall?
@@ -25,7 +25,12 @@ class AuthService {
     
 }
 
-extension AuthService: IAuthService {
+extension MCAuthService: IMCAuthService {
+    
+    func getCurrentConnectionState(callback: @escaping (Channel.ConnectivityState) -> Void) {
+        guard let client = authorizationClient else { return }
+        callback(client.channel.connectivityState())
+    }
     
     func addConnectivityObserver(callback: @escaping (Channel.ConnectivityState) -> Void) {
         authorizationClient?.channel.addConnectivityObserver(callback: callback)

@@ -9,11 +9,10 @@
 import Foundation
 import SwiftGRPC
 
-public protocol IUserService {
-    func setUserName(name: String, completion: @escaping (CallResult?) -> Void)
+public protocol IMCUserService: IMCNetworkService {
+    func setUserName(token: String, name: String, completion: @escaping (CallResult?) -> Void)
     func getUserBy(phone: String, completion: @escaping (MCUser?, CallResult?) -> Void)
     func getUserBy(id: String, completion: @escaping (MCUser?, CallResult?) -> Void)
     func getUserBy(name: String, completion: @escaping (MCUser?, CallResult?) -> Void)
     func getKnownRegisteredUsersBy(phones: [String], completion: @escaping ([MCUser], CallResult?) -> Void)
-    func addConnectivityObserver(callback: @escaping (Channel.ConnectivityState) -> Void)
 }

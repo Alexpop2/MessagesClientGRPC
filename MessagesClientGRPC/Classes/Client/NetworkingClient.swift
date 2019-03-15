@@ -11,9 +11,9 @@ import SwiftGRPC
 
 public class NetworkingClient {
     
-    public let userService: IUserService
-    public let authService: IAuthService
-    public let messageService: IMessageService
+    public let userService: IMCUserService
+    public let authService: IMCAuthService
+    public let messageService: IMCMessageService
     
     private var monitor: ClientNetworkMonitor?
     private var address: String
@@ -26,22 +26,22 @@ public class NetworkingClient {
     private init(address: String, caCertificate: String, clientCertificate: String, clientKey: String, sslDomain: String) {
         
         self.address = address
-        let userService = UserService(address: address,
-                                      caCertificate: caCertificate,
-                                      clientCertificate: clientCertificate,
-                                      clientKey: clientKey,
-                                      sslDomain: sslDomain)
-        let authService = AuthService(address: address,
-                                      caCertificate: caCertificate,
-                                      clientCertificate: clientCertificate,
-                                      clientKey: clientKey,
-                                      sslDomain: sslDomain)
-        let messageService = MessageService(address: address,
-                                            caCertificate: caCertificate,
-                                            clientCertificate: clientCertificate,
-                                            clientKey: clientKey,
-                                            sslDomain: sslDomain,
-                                            receivedTokenClosure: { token in userService.setToken(token: token) })
+        let userService = MCUserService(address: address,
+                                        caCertificate: caCertificate,
+                                        clientCertificate: clientCertificate,
+                                        clientKey: clientKey,
+                                        sslDomain: sslDomain)
+        let authService = MCAuthService(address: address,
+                                        caCertificate: caCertificate,
+                                        clientCertificate: clientCertificate,
+                                        clientKey: clientKey,
+                                        sslDomain: sslDomain)
+        let messageService = MCMessageService(address: address,
+                                              caCertificate: caCertificate,
+                                              clientCertificate: clientCertificate,
+                                              clientKey: clientKey,
+                                              sslDomain: sslDomain,
+                                              receivedTokenClosure: { token in userService.setToken(token: token) })
         
         self.userService = userService
         self.authService = authService
