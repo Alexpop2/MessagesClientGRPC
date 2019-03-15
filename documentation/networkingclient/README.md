@@ -14,7 +14,7 @@ Client for working with server
 | **shared** | ```NetworkingClient```  | Shared instance of configured NetworkingClient |
 | **networkReachability** | ```Bool? { get }``` | Get current rechability of network(After switching WIFI->Cellular and vice versa) |
 
-[Services README] [Services]
+[Services README][Services]
 
 ### Functions
 
@@ -34,4 +34,4 @@ Setting callback for connection state changed (WIFI->Cellular and vice versa).
 func configureStateCallback(completion: @escaping (ClientNetworkMonitor.State) -> Void)
 ```
 
-   [Services]: <https://github.com/Alexpop2/MessagesClientGRPC/tree/master/MessagesClientGRPC/documentation/services/README.md>
+   [Services]: <https://github.com/Alexpop2/MessagesClientGRPC/tree/master/documentation/services/README.md>
