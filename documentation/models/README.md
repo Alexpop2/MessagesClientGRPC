@@ -75,12 +75,12 @@ Code error enum
 
 | case  | raw | description |
 | ------ | ------ | ------ |
-| ```OK``` | 200 |  Message added to queue, because receiver is offline |
-| ```FailedConnect``` | 201 |  Message is currently sending |
-| ```MessageReceivedOK``` | 1000 |  Message delivered |
-| ```UserNotFound``` | 404 |  Message sending failed |
-| ```InvalidToken``` | 403 |  Unrecognized state (GRPC) |
-| ```Unrecognized``` | 0 |  Unrecognized state (GRPC) |
+| ```OK``` | 200 |  Connected |
+| ```FailedConnect``` | 201 |  Couldn't connect |
+| ```MessageReceivedOK``` | 1000 |  Message received |
+| ```UserNotFound``` | 404 |  User not found |
+| ```InvalidToken``` | 403 |  Invalid token |
+| ```Unrecognized``` | 0 |  Unrecognized error |
 
 ---
 
