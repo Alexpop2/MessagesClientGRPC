@@ -77,6 +77,7 @@ Code error enum
 | ------ | ------ | ------ |
 | ```OK``` | 200 |  Connected |
 | ```FailedConnect``` | 201 |  Couldn't connect |
+| ```Disconnected``` | 202 |  Disconnected |
 | ```MessageReceivedOK``` | 1000 |  Message received |
 | ```UserNotFound``` | 404 |  User not found |
 | ```InvalidToken``` | 403 |  Invalid token |
