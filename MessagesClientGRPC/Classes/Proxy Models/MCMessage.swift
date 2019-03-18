@@ -37,6 +37,7 @@ public class MCMessage {
     public private(set) var date: Int = Int()
     public private(set) var state: MCMessageState = .queued
     public private(set) var sender: MCSender = MCSender(id: "", nickName: "")
+    public private(set) var code: Int = Int()
     
     var message: Messageservice_Message {
         var message = Messageservice_Message()

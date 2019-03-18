@@ -209,7 +209,7 @@ Method for send message.
 
 | argument | description |
 | ------ | ------ |
-| ```token``` |  Firebase token |
+| ```message``` |  Message |
 | ```completion``` | Result callback |
 
 **CallResult Errors:**

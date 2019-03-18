@@ -151,6 +151,11 @@ struct Messageservice_Message {
   /// Clears the value of `sender`. Subsequent reads from it will return its default value.
   mutating func clearSender() {_uniqueStorage()._sender = nil}
 
+  var code: Int32 {
+    get {return _storage._code}
+    set {_uniqueStorage()._code = newValue}
+  }
+
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
   init() {}
@@ -278,6 +283,7 @@ extension Messageservice_Message: SwiftProtobuf.Message, SwiftProtobuf._MessageI
     5: .same(proto: "date"),
     6: .same(proto: "state"),
     7: .same(proto: "sender"),
+    8: .same(proto: "code"),
   ]
 
   fileprivate class _StorageClass {
@@ -288,6 +294,7 @@ extension Messageservice_Message: SwiftProtobuf.Message, SwiftProtobuf._MessageI
     var _date: Int32 = 0
     var _state: Messageservice_MessageState = .queued
     var _sender: Messageservice_Sender? = nil
+    var _code: Int32 = 0
 
     static let defaultInstance = _StorageClass()
 
@@ -301,6 +308,7 @@ extension Messageservice_Message: SwiftProtobuf.Message, SwiftProtobuf._MessageI
       _date = source._date
       _state = source._state
       _sender = source._sender
+      _code = source._code
     }
   }
 
@@ -323,6 +331,7 @@ extension Messageservice_Message: SwiftProtobuf.Message, SwiftProtobuf._MessageI
         case 5: try decoder.decodeSingularInt32Field(value: &_storage._date)
         case 6: try decoder.decodeSingularEnumField(value: &_storage._state)
         case 7: try decoder.decodeSingularMessageField(value: &_storage._sender)
+        case 8: try decoder.decodeSingularInt32Field(value: &_storage._code)
         default: break
         }
       }
@@ -352,6 +361,9 @@ extension Messageservice_Message: SwiftProtobuf.Message, SwiftProtobuf._MessageI
       if let v = _storage._sender {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 7)
       }
+      if _storage._code != 0 {
+        try visitor.visitSingularInt32Field(value: _storage._code, fieldNumber: 8)
+      }
     }
     try unknownFields.traverse(visitor: &visitor)
   }
@@ -368,6 +380,7 @@ extension Messageservice_Message: SwiftProtobuf.Message, SwiftProtobuf._MessageI
         if _storage._date != rhs_storage._date {return false}
         if _storage._state != rhs_storage._state {return false}
         if _storage._sender != rhs_storage._sender {return false}
+        if _storage._code != rhs_storage._code {return false}
         return true
       }
       if !storagesAreEqual {return false}
