@@ -12,6 +12,7 @@ import SwiftGRPC
 public enum NetworkingClientError: Int {
     case OK = 200
     case FailedConnect = 201
+    case Disconnected = 202
     case MessageReceivedOK = 1000
     case UserNotFound = 404
     case InvalidToken = 403
