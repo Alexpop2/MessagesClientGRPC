@@ -235,4 +235,15 @@ Perform message stream
 | ```data``` |  Perform message data |
 | ```completion``` | Receiving messages from server |
 
+**State in MCMessage:**
+
+MCMessage can contain information about stream.
+Message ID will be ```-1```
+
+| text | description |
+| ------ | ------ |
+| ```Connected``` |  Stream performed |
+| ```Invalid token``` | Invalid firebase token |
+| ```User not found``` | User with this phone and token not found |
+
 ---
