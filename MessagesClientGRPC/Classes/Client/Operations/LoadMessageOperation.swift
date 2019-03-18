@@ -37,10 +37,12 @@ class LoadMessageOperation: Foundation.Operation {
         var messageDisconnect = Messageservice_Message()
         messageDisconnect.id = "-1"
         messageDisconnect.text = "Couldn't connect"
+        messageDisconnect.code = 201
         
         streamCall = messageStream
         
         messageDisconnect.text = "Disconnected"
+        messageDisconnect.code = 202
         
         while true {
             if(isCancelled) {

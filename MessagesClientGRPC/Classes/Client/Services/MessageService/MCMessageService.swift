@@ -16,9 +16,8 @@ class MCMessageService {
     
     private let connectionQueue = DispatchQueue(label: "connectionQueue")
     private let loadMessageQueue = OperationQueue()
-    private let tryConnectionQueue = OperationQueue()
     
-    private var connectionState = true
+    //private var connectionState = true
     private var userID = ""
     private var nickName = ""
     private var login = ""
@@ -83,7 +82,6 @@ extension MCMessageService: IMCMessageService {
     
     public func performMessageStream(data: MCPerformMessageData, completion: @escaping (MCMessage) -> Void) {
         self.loadMessageQueue.cancelAllOperations()
-        self.tryConnectionQueue.cancelAllOperations()
         self.messageStreamCall?.cancel()
         
         self.login = data.phone
@@ -94,61 +92,52 @@ extension MCMessageService: IMCMessageService {
         receivedTokenClosure(data.messageClientToken.data)
         
         connectionQueue.async {
-            
+        
             // TODO: Solve problem with silent closing connection
             
             var messageDisconnect = Messageservice_Message()
             messageDisconnect.id = "-1"
             messageDisconnect.text = "Couldn't connect"
-            
-            if(!self.connectionState) {
-                self.tryConnectionQueue.addOperation(TryConnectionOperation(messageClient: self.messageClient,
+            messageDisconnect.code = 201
+        
+
+            do {
+                guard let metadata = self.messageClient?.metadata else { return }
+                
+                let messageStream = try self.messageClient?.performMessageStream(metadata: metadata,
+                                                                                 completion: { (call) in
+                })
+                self.messageStreamCall = messageStream
+                var request = Messageservice_MessageStreamRequest();
+                request.login = self.login
+                request.token = self.token
+                do {
+                    _ = try messageStream?.send(request)
+                    //self.connectionState = true
+                    self.loadMessageQueue.addOperation(LoadMessageOperation(login: self.login,
+                                                                            token: self.token,
+                                                                            messageStream: messageStream,
+                                                                            userID: self.userID,
                                                                             completion: { message in
                                                                                 completion(MCMessage(GRPCMessage: message)) },
-                                                                            setConnectionStateTrue: {
-                                                                                self.connectionState = true
-                                                                                self.performMessageStream(data: data,
-                                                                                                          completion: completion)
-                }))
-            } else {
-                do {
-                    guard let metadata = self.messageClient?.metadata else { return }
-                    
-                    let messageStream = try self.messageClient?.performMessageStream(metadata: metadata,
-                                                                                     completion: { (call) in
-                    })
-                    self.messageStreamCall = messageStream
-                    var request = Messageservice_MessageStreamRequest();
-                    request.login = self.login
-                    request.token = self.token
-                    do {
-                        _ = try messageStream?.send(request)
-                        self.connectionState = true
-                        self.loadMessageQueue.addOperation(LoadMessageOperation(login: self.login,
-                                                                                token: self.token,
-                                                                                messageStream: messageStream,
-                                                                                userID: self.userID,
-                                                                                completion: { message in
-                                                                                    completion(MCMessage(GRPCMessage: message)) },
-                                                                                messageService: self))
-                    } catch {
-                        self.connectionState = false
-                        DispatchQueue.main.async {
-                            completion(MCMessage(GRPCMessage: messageDisconnect))
-                        }
-                        self.performMessageStream(data: data, completion: completion)
-                    }
+                                                                            messageService: self))
                 } catch {
-                    self.connectionState = false
+                    //self.connectionState = false
                     DispatchQueue.main.async {
                         completion(MCMessage(GRPCMessage: messageDisconnect))
                     }
                     self.performMessageStream(data: data, completion: completion)
                 }
+            } catch {
+                //self.connectionState = false
+                DispatchQueue.main.async {
+                    completion(MCMessage(GRPCMessage: messageDisconnect))
+                }
+                self.performMessageStream(data: data, completion: completion)
             }
             
-            
         }
+
     }
     
 }

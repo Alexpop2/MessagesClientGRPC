@@ -37,7 +37,7 @@ public class MCMessage {
     public private(set) var date: Int = Int()
     public private(set) var state: MCMessageState = .queued
     public private(set) var sender: MCSender = MCSender(id: "", nickName: "")
-    public private(set) var code: Int = Int()
+    public private(set) var code: NetworkingClientError = NetworkingClientError.Unrecognized
     
     var message: Messageservice_Message {
         var message = Messageservice_Message()
@@ -62,6 +62,7 @@ public class MCMessage {
         message.sender = Messageservice_Sender()
         message.sender.id = sender.id
         message.sender.nickName = sender.nickName
+        message.code = Int32(code.rawValue)
         
         return message
     }
@@ -101,6 +102,7 @@ public class MCMessage {
         }
         self.sender.id = GRPCMessage.sender.id
         self.sender.nickName = GRPCMessage.sender.nickName
+        self.code = NetworkingClientError(rawValue: Int(GRPCMessage.code)) ?? .Unrecognized
     }
     
     func setState(state: MCMessageState) {
