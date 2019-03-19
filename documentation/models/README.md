@@ -103,6 +103,7 @@ Message model
 | ```state``` | **```MCMessageState```** |  get |  Message state ID |
 | ```sender``` | **```MCSender```** |  get |  Message sender |
 | ```code``` | **```NetworkingClientError```** |  get |  Error code |
+| ```phone``` | **```String```** |  get |  Sender's phone. Available only for sender. For receiver will be empty string. |
 
 ### Init
 
