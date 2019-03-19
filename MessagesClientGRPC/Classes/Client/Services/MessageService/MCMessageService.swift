@@ -17,9 +17,6 @@ class MCMessageService {
     private let connectionQueue = DispatchQueue(label: "connectionQueue")
     private let loadMessageQueue = OperationQueue()
     
-    //private var connectionState = true
-    private var userID = ""
-    private var nickName = ""
     private var login = ""
     private var token = ""
     
@@ -54,8 +51,7 @@ extension MCMessageService: IMCMessageService {
     
     public func send(message: MCMessage, completion: @escaping (CallResult?) -> Void) {
         var mcMessage = message.message
-        mcMessage.sender.id = self.userID
-        mcMessage.sender.nickName = self.nickName
+        mcMessage.phone = self.login
         mcMessage.token = self.token
         do {
             _ = try messageClient?.send(mcMessage, completion: { (state, result) in
@@ -86,8 +82,6 @@ extension MCMessageService: IMCMessageService {
         
         self.login = data.phone
         self.token = data.messageClientToken.data
-        self.userID = data.userID
-        self.nickName = data.userNickName
         
         receivedTokenClosure(data.messageClientToken.data)
         
@@ -117,7 +111,6 @@ extension MCMessageService: IMCMessageService {
                     self.loadMessageQueue.addOperation(LoadMessageOperation(login: self.login,
                                                                             token: self.token,
                                                                             messageStream: messageStream,
-                                                                            userID: self.userID,
                                                                             completion: { message in
                                                                                 completion(MCMessage(GRPCMessage: message)) },
                                                                             messageService: self))

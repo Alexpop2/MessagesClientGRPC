@@ -11,7 +11,6 @@ import Foundation
 class LoadMessageOperation: Foundation.Operation {
     private var streamCall: Messageservice_MessageServicePerformMessageStreamCall?
     private let completion: (Messageservice_Message) -> Void
-    private let userID: String
     private let login: String
     private let token: String
     private let messageStream: Messageservice_MessageServicePerformMessageStreamCall?
@@ -20,11 +19,9 @@ class LoadMessageOperation: Foundation.Operation {
     init(login: String,
          token: String,
          messageStream: Messageservice_MessageServicePerformMessageStreamCall?,
-         userID: String,
          completion: @escaping (Messageservice_Message) -> Void,
          messageService: MCMessageService) {
         self.completion = completion
-        self.userID = userID
         self.login = login
         self.token = token
         self.messageStream = messageStream
@@ -56,7 +53,7 @@ class LoadMessageOperation: Foundation.Operation {
                 var message = try streamCall?.receive()
                 if(message != nil) {
                     DispatchQueue.main.async {
-                        if(message?.state == .sending && message?.receiver.id == self.userID) {
+                        if(message?.state == .sending && message?.phone == self.login) {
                             self.messageService.verifyGet(message: MCMessage(GRPCMessage: message!), completion: { (result) in
                             })
                             message!.state = .delivered

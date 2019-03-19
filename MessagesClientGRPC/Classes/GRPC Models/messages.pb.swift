@@ -156,6 +156,11 @@ struct Messageservice_Message {
     set {_uniqueStorage()._code = newValue}
   }
 
+  var phone: String {
+    get {return _storage._phone}
+    set {_uniqueStorage()._phone = newValue}
+  }
+
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
   init() {}
@@ -284,6 +289,7 @@ extension Messageservice_Message: SwiftProtobuf.Message, SwiftProtobuf._MessageI
     6: .same(proto: "state"),
     7: .same(proto: "sender"),
     8: .same(proto: "code"),
+    9: .same(proto: "phone"),
   ]
 
   fileprivate class _StorageClass {
@@ -295,6 +301,7 @@ extension Messageservice_Message: SwiftProtobuf.Message, SwiftProtobuf._MessageI
     var _state: Messageservice_MessageState = .queued
     var _sender: Messageservice_Sender? = nil
     var _code: Int32 = 0
+    var _phone: String = String()
 
     static let defaultInstance = _StorageClass()
 
@@ -309,6 +316,7 @@ extension Messageservice_Message: SwiftProtobuf.Message, SwiftProtobuf._MessageI
       _state = source._state
       _sender = source._sender
       _code = source._code
+      _phone = source._phone
     }
   }
 
@@ -332,6 +340,7 @@ extension Messageservice_Message: SwiftProtobuf.Message, SwiftProtobuf._MessageI
         case 6: try decoder.decodeSingularEnumField(value: &_storage._state)
         case 7: try decoder.decodeSingularMessageField(value: &_storage._sender)
         case 8: try decoder.decodeSingularInt32Field(value: &_storage._code)
+        case 9: try decoder.decodeSingularStringField(value: &_storage._phone)
         default: break
         }
       }
@@ -364,6 +373,9 @@ extension Messageservice_Message: SwiftProtobuf.Message, SwiftProtobuf._MessageI
       if _storage._code != 0 {
         try visitor.visitSingularInt32Field(value: _storage._code, fieldNumber: 8)
       }
+      if !_storage._phone.isEmpty {
+        try visitor.visitSingularStringField(value: _storage._phone, fieldNumber: 9)
+      }
     }
     try unknownFields.traverse(visitor: &visitor)
   }
@@ -381,6 +393,7 @@ extension Messageservice_Message: SwiftProtobuf.Message, SwiftProtobuf._MessageI
         if _storage._state != rhs_storage._state {return false}
         if _storage._sender != rhs_storage._sender {return false}
         if _storage._code != rhs_storage._code {return false}
+        if _storage._phone != rhs_storage._phone {return false}
         return true
       }
       if !storagesAreEqual {return false}
