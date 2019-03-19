@@ -124,13 +124,11 @@ Perform message struct
 | ------ | ------ | ------ | ------ |
 | ```phone``` | **```String```** |  get |  Message ID |
 | ```messageClientToken``` | **```MCFirebaseToken```** |  get |  Firebase token |
-| ```userID``` | **```String```** |  get |  User ID |
-| ```userNickName``` | **```String```** |  get |  User Nickname |
 
 ### Init
 
 ```swift
-init(phone: String, messageClientToken: MCFirebaseToken, userID: String, userNickName: String)
+init(phone: String, messageClientToken: MCFirebaseToken)
 ```
 
 ---
