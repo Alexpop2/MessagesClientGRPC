@@ -103,7 +103,7 @@ Message model
 | ```state``` | **```MCMessageState```** |  get |  Message state ID |
 | ```sender``` | **```MCSender```** |  get |  Message sender |
 | ```code``` | **```NetworkingClientError```** |  get |  Error code |
-| ```phone``` | **```String```** |  get |  Sender's phone. Available only for sender. For receiver will be empty string. |
+| ```phone``` | **```String?```** |  get |  If this field contains user's phone, it means that this message was sent to user. If nil - it's user's message with different states. |
 
 ### Init
 
