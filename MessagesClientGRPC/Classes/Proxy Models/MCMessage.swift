@@ -47,7 +47,7 @@ public class MCMessage {
         message.receiver = Messageservice_Receiver()
         message.receiver.id = receiver.id
         message.token = token
-        message.date = Int32(date)
+        message.date = Int64(date)
         switch state {
         case .queued:
             message.state = .queued

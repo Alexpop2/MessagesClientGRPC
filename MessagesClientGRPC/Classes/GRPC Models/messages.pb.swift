@@ -132,7 +132,7 @@ struct Messageservice_Message {
     set {_uniqueStorage()._token = newValue}
   }
 
-  var date: Int32 {
+  var date: Int64 {
     get {return _storage._date}
     set {_uniqueStorage()._date = newValue}
   }
@@ -297,7 +297,7 @@ extension Messageservice_Message: SwiftProtobuf.Message, SwiftProtobuf._MessageI
     var _text: String = String()
     var _receiver: Messageservice_Receiver? = nil
     var _token: String = String()
-    var _date: Int32 = 0
+    var _date: Int64 = 0
     var _state: Messageservice_MessageState = .queued
     var _sender: Messageservice_Sender? = nil
     var _code: Int32 = 0
@@ -336,7 +336,7 @@ extension Messageservice_Message: SwiftProtobuf.Message, SwiftProtobuf._MessageI
         case 2: try decoder.decodeSingularStringField(value: &_storage._text)
         case 3: try decoder.decodeSingularMessageField(value: &_storage._receiver)
         case 4: try decoder.decodeSingularStringField(value: &_storage._token)
-        case 5: try decoder.decodeSingularInt32Field(value: &_storage._date)
+        case 5: try decoder.decodeSingularInt64Field(value: &_storage._date)
         case 6: try decoder.decodeSingularEnumField(value: &_storage._state)
         case 7: try decoder.decodeSingularMessageField(value: &_storage._sender)
         case 8: try decoder.decodeSingularInt32Field(value: &_storage._code)
@@ -362,7 +362,7 @@ extension Messageservice_Message: SwiftProtobuf.Message, SwiftProtobuf._MessageI
         try visitor.visitSingularStringField(value: _storage._token, fieldNumber: 4)
       }
       if _storage._date != 0 {
-        try visitor.visitSingularInt32Field(value: _storage._date, fieldNumber: 5)
+        try visitor.visitSingularInt64Field(value: _storage._date, fieldNumber: 5)
       }
       if _storage._state != .queued {
         try visitor.visitSingularEnumField(value: _storage._state, fieldNumber: 6)

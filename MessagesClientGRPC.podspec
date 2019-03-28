@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "MessagesClientGRPC"
-  s.version      = "0.0.9"
+  s.version      = "0.0.10"
   s.summary      = "Beetlab messages client."
   s.platform = :ios
   s.ios.deployment_target = '8.0'
