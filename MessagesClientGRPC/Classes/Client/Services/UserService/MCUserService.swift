@@ -131,4 +131,26 @@ extension MCUserService: IMCUserService {
             completion([], nil)
         }
     }
+    
+    func getKnownRegisteredUsersBy(ids: [String], completion: @escaping ([MCUser], CallResult?) -> Void) {
+        
+        var serviceIds = Userservice_IDs()
+        serviceIds.ids = ids
+        serviceIds.token = self.token
+        do {
+            _ = try usersClient?.getKnownRegisteredUsersByIds(serviceIds, completion: { (users, callResult) in
+                guard let usersUnwrapped = users else {
+                    completion([], callResult)
+                    return
+                }
+                var users = [MCUser]()
+                for user in usersUnwrapped.users {
+                    users.append(MCUser(id: user.id, name: user.name, phone: user.phone))
+                }
+                completion(users, callResult)
+            })
+        } catch {
+            completion([], nil)
+        }
+    }
 }

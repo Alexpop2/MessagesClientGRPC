@@ -15,4 +15,5 @@ public protocol IMCUserService: IMCNetworkService {
     func getUserBy(id: String, completion: @escaping (MCUser?, CallResult?) -> Void)
     func getUserBy(name: String, completion: @escaping (MCUser?, CallResult?) -> Void)
     func getKnownRegisteredUsersBy(phones: [String], completion: @escaping ([MCUser], CallResult?) -> Void)
+    func getKnownRegisteredUsersBy(ids: [String], completion: @escaping ([MCUser], CallResult?) -> Void)
 }

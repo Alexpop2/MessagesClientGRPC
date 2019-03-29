@@ -49,6 +49,12 @@ fileprivate final class Userservice_UserServicegetKnownRegisteredUsersByPhonesCa
   override class var method: String { return "/userservice.UserService/getKnownRegisteredUsersByPhones" }
 }
 
+internal protocol Userservice_UserServicegetKnownRegisteredUsersByIdsCall: ClientCallUnary {}
+
+fileprivate final class Userservice_UserServicegetKnownRegisteredUsersByIdsCallBase: ClientCallUnaryBase<Userservice_IDs, Userservice_Users>, Userservice_UserServicegetKnownRegisteredUsersByIdsCall {
+  override class var method: String { return "/userservice.UserService/getKnownRegisteredUsersByIds" }
+}
+
 internal protocol Userservice_UserServicesetUserNameCall: ClientCallUnary {}
 
 fileprivate final class Userservice_UserServicesetUserNameCallBase: ClientCallUnaryBase<Userservice_Name, Userservice_Empty>, Userservice_UserServicesetUserNameCall {
@@ -77,6 +83,11 @@ internal protocol Userservice_UserServiceService: ServiceClient {
   func getKnownRegisteredUsersByPhones(_ request: Userservice_Phones, metadata customMetadata: Metadata) throws -> Userservice_Users
   /// Asynchronous. Unary.
   func getKnownRegisteredUsersByPhones(_ request: Userservice_Phones, metadata customMetadata: Metadata, completion: @escaping (Userservice_Users?, CallResult) -> Void) throws -> Userservice_UserServicegetKnownRegisteredUsersByPhonesCall
+
+  /// Synchronous. Unary.
+  func getKnownRegisteredUsersByIds(_ request: Userservice_IDs, metadata customMetadata: Metadata) throws -> Userservice_Users
+  /// Asynchronous. Unary.
+  func getKnownRegisteredUsersByIds(_ request: Userservice_IDs, metadata customMetadata: Metadata, completion: @escaping (Userservice_Users?, CallResult) -> Void) throws -> Userservice_UserServicegetKnownRegisteredUsersByIdsCall
 
   /// Synchronous. Unary.
   func setUserName(_ request: Userservice_Name, metadata customMetadata: Metadata) throws -> Userservice_Empty
@@ -120,6 +131,15 @@ internal extension Userservice_UserServiceService {
   /// Asynchronous. Unary.
   func getKnownRegisteredUsersByPhones(_ request: Userservice_Phones, completion: @escaping (Userservice_Users?, CallResult) -> Void) throws -> Userservice_UserServicegetKnownRegisteredUsersByPhonesCall {
     return try self.getKnownRegisteredUsersByPhones(request, metadata: self.metadata, completion: completion)
+  }
+
+  /// Synchronous. Unary.
+  func getKnownRegisteredUsersByIds(_ request: Userservice_IDs) throws -> Userservice_Users {
+    return try self.getKnownRegisteredUsersByIds(request, metadata: self.metadata)
+  }
+  /// Asynchronous. Unary.
+  func getKnownRegisteredUsersByIds(_ request: Userservice_IDs, completion: @escaping (Userservice_Users?, CallResult) -> Void) throws -> Userservice_UserServicegetKnownRegisteredUsersByIdsCall {
+    return try self.getKnownRegisteredUsersByIds(request, metadata: self.metadata, completion: completion)
   }
 
   /// Synchronous. Unary.
@@ -175,6 +195,17 @@ internal final class Userservice_UserServiceServiceClient: ServiceClientBase, Us
   /// Asynchronous. Unary.
   internal func getKnownRegisteredUsersByPhones(_ request: Userservice_Phones, metadata customMetadata: Metadata, completion: @escaping (Userservice_Users?, CallResult) -> Void) throws -> Userservice_UserServicegetKnownRegisteredUsersByPhonesCall {
     return try Userservice_UserServicegetKnownRegisteredUsersByPhonesCallBase(channel)
+      .start(request: request, metadata: customMetadata, completion: completion)
+  }
+
+  /// Synchronous. Unary.
+  internal func getKnownRegisteredUsersByIds(_ request: Userservice_IDs, metadata customMetadata: Metadata) throws -> Userservice_Users {
+    return try Userservice_UserServicegetKnownRegisteredUsersByIdsCallBase(channel)
+      .run(request: request, metadata: customMetadata)
+  }
+  /// Asynchronous. Unary.
+  internal func getKnownRegisteredUsersByIds(_ request: Userservice_IDs, metadata customMetadata: Metadata, completion: @escaping (Userservice_Users?, CallResult) -> Void) throws -> Userservice_UserServicegetKnownRegisteredUsersByIdsCall {
+    return try Userservice_UserServicegetKnownRegisteredUsersByIdsCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
